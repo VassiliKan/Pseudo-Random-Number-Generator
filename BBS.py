@@ -1,7 +1,9 @@
 from numpy import *
 from matplotlib.pyplot import *
+import datetime
 
-listXn = []
+
+listXn=[]
 
 def mod3plus4(a):
 	if a % 4 == 3:
@@ -32,9 +34,9 @@ def BBS(nb):
 	x = findX(n)
 	x0 = xi = x**2 % n
 	for i in range(nb):
+		listXn.append(xi)
 		if i % (nb / 10) == 0:
 			print("... Processing", int(i / (nb/100)), "%")
-		listXn.append(xi)
 		xiPlus1 = xi**2 % n
 		if xi % 2 == 0:
 			bits += "0"
@@ -95,7 +97,10 @@ def CountFourBytes(string):
 		listCounter[j] = listCounter[j] / lenght
 
 	print("Les differentes proportion des sous chaines composees de 4 bits sont, par ordre croissant : \n", listCounter, "\n")
-
+	print("Voici les differentes donnees statistiques calculees a partir des differentes proportion des sous chaines composees de 8 bits, soit un octet : ")
+	print(" - Etendue : ", max(listCounter) - min(listCounter))
+	print(" - moyenne : ", mean(listCounter))
+	print(" - ecart type : ", std(listCounter))
 
 
 def CountBits(string):
@@ -113,8 +118,7 @@ def CountBits(string):
 
 	#print(listCounter)	
 	print("Voici les differentes donnees statistiques calculees a partir des differentes proportion des sous chaines composees de 8 bits, soit un octet : ")
-	print(" - min : ", min(listCounter))
-	print(" - max : ", max(listCounter))
+	print(" - Etendue : ", max(listCounter) - min(listCounter))
 	print(" - moyenne : ", mean(listCounter))
 	print(" - ecart type : ", std(listCounter))
 	
@@ -126,6 +130,9 @@ def PlotNuagePoints():
 	x = listXn[:-1]
 	y = listXn[1:]
 	scatter(x=x, y=y)
+	title('Nombre généré Xn en fonction de Xn+1', fontsize=10)
+	xlabel('Xn+1')
+	ylabel('Xn')
 	show()
 	
 
@@ -138,28 +145,37 @@ def PlotCourbe():
 	show()
 
 
-strBytes = BBS(10000000)
+
+### Exe ####
+
+strBytes = BBS(1000)
+
+
+### Plot ###
 
 #PlotCourbe()
 
 #PlotNuagePoints()
 
 
-CountBytes(strBytes)
+
+### Stat ###
+
+#CountBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # La proportion de 1 est de 0.500079, celle de 0 est de 0.499921
 
-CountDuoBytes(strBytes)
+#CountDuoBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # La proportion de 00 est de 0.249792, celle de 01 est de 0.250412, celle de 10 est : 0.249846, et celle de 11 est de 0.24995
 
-CountFourBytes(strBytes)
+#CountFourBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # On obtient les proportions suivantes pour chacun des demis octets existants : 
 # [0.062464, 0.062244, 0.063016, 0.062628, 0.0635, 0.06206, 0.062548, 0.062612, 
 # 0.06134, 0.062716, 0.06258, 0.062456, 0.061928, 0.063084, 0.062456, 0.062368]         
 
-CountBits(strBytes)
+#CountBits(strBytes)
 # Pour 1 000 000 de nombres générés:
 # On obtient ces données statistiques pour chacun des octets générés par la liste de bits : 
 #
@@ -174,5 +190,5 @@ CountBits(strBytes)
 # Min :  0.00372 
 # Max :  0.0040464
 # Moyenne :  0.00390625                                                                                                 
-# Ecart type :  0.00005327506  
+# Ecart type :  0.000053275 
 # L'ecart-type est bien plus faible
