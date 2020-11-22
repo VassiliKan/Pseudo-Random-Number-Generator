@@ -1,21 +1,27 @@
 import random
-import matplotlib.pyplot as plt
-import numpy as np
+from matplotlib.pyplot import *
+from numpy import *
 import math
-import time
+
+
+
+listXn=[]
 
 
 def Gener(a, b, m, x0, nbLoop):
 	bits = ""
 	xn = x0		
 	for i in range(nbLoop):
-		if i % (nbLoop / 10) == 0:
-			print("... Processing", int(i / (nbLoop/100)), "%")
+		listXn.append(xn)
+		#if i % (nbLoop / 10) == 0:
+			#print("... Processing", int(i / (nbLoop/100)), "%")
 		xn = ((a * xn + b) % m)
 		if xn % 2 == 0:
 			bits += "0"
+			print("0")
 		else:
 			bits += "1"
+			print("1")
 	print("... Processing 100% \n... Done !\n")
 	return bits
 
@@ -48,7 +54,7 @@ def CountDuoBytes(string):
 			nb01 = nb01 + 1
 		elif subStr == '10':			
 			nb10 = nb10 + 1
-		elif subStr == '10':			
+		elif subStr == '11':			
 			nb11 = nb11 + 1	
 	print("La proportion de la sous chaine '00' est : ", nb00 / lenght, ", celle de '01' est de  ", \
 			nb01 / lenght, ", celle de '10' est : ", nb10 / lenght, ", celle de '11' est de  ", nb11 / lenght, "\n")
@@ -99,33 +105,52 @@ def CountBits(string):
 ## Nuage de point de coordonnées (xn+1, xn)
 ## Semble uniformément répartie
 def PlotNuagePoints():
-	x = listXn[:-1]
-	y = listXn[1:]
+	x = listXn[:-1]   #xn
+	y = listXn[1:]    #xn+1
 	scatter(x=x, y=y)
+	title('Nuage de points du nombre généré Xn+1 en fonction de Xn', fontsize=10)
+	xlabel('Xn')
+	ylabel('Xn+1')
 	show()
 	
+	
+def PlotPariteNuagePoint():
+	y = list(map(int, strBytes))
+	x = arange(0, len(y),1)
+	scatter(x=x, y=y)
+	title('Bit généré en fonction de son rang n', fontsize=10)
+	xlabel('Rang n (entier)')
+	ylabel('Valeur du bit')
+	show()
+
+
 
 ## Bit obtenu par rapport a l'indice i
 # number of number generated must be under 500
-def PlotCourbe():
+def PlotPariteCourbe():
 	listBytes = list(map(int, strBytes))
-	print(listBytes)
 	plot(arange(0,len(listBytes),1),listBytes)
+	title('Bit généré en fonction de son rang n', fontsize=10)
+	xlabel('Rang n (entier)')
+	ylabel('Valeur du bit')
 	show()
 	
 
+
 ### Exe ###
 
-strBytes = Gener(31, 3, 9576890767, 411, 1000)
-
+###        Gener(a, b, m, x0, nbLoop)
+#strBytes = Gener(314125421, 1, 10**8, 11, 50)
+strBytes = Gener(4	, 2, 9, 11, 25)
 
 
 ### Plot ###
 
-#PlotCourbe()
+#PlotPariteCourbe()
 
-#PlotNuagePoints()
+PlotNuagePoints()
 
+#PlotPariteNuagePoint()
 
 ### Stat ###
 

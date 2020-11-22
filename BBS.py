@@ -1,6 +1,6 @@
 from numpy import *
 from matplotlib.pyplot import *
-import datetime
+
 
 
 listXn=[]
@@ -100,7 +100,7 @@ def CountFourBytes(string):
 	print("Voici les differentes donnees statistiques calculees a partir des differentes proportion des sous chaines composees de 8 bits, soit un octet : ")
 	print(" - Etendue : ", max(listCounter) - min(listCounter))
 	print(" - moyenne : ", mean(listCounter))
-	print(" - ecart type : ", std(listCounter))
+	print(" - ecart type : ", std(listCounter), "\n")
 
 
 def CountBits(string):
@@ -130,7 +130,7 @@ def PlotNuagePoints():
 	x = listXn[:-1]
 	y = listXn[1:]
 	scatter(x=x, y=y)
-	title('Nombre généré Xn en fonction de Xn+1', fontsize=10)
+	title('Nuage de points du nombre généré Xn en fonction de Xn+1', fontsize=10)	
 	xlabel('Xn+1')
 	ylabel('Xn')
 	show()
@@ -140,7 +140,6 @@ def PlotNuagePoints():
 # number of number generated must be under 500
 def PlotCourbe():
 	listBytes = list(map(int, strBytes))
-	print(listBytes)
 	plot(arange(0,len(listBytes),1),listBytes)
 	show()
 
@@ -153,29 +152,29 @@ strBytes = BBS(1000)
 
 ### Plot ###
 
-#PlotCourbe()
+PlotCourbe()
 
-#PlotNuagePoints()
+PlotNuagePoints()
 
 
 
 ### Stat ###
 
-#CountBytes(strBytes)
+CountBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # La proportion de 1 est de 0.500079, celle de 0 est de 0.499921
 
-#CountDuoBytes(strBytes)
+CountDuoBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # La proportion de 00 est de 0.249792, celle de 01 est de 0.250412, celle de 10 est : 0.249846, et celle de 11 est de 0.24995
 
-#CountFourBytes(strBytes)
+CountFourBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
 # On obtient les proportions suivantes pour chacun des demis octets existants : 
 # [0.062464, 0.062244, 0.063016, 0.062628, 0.0635, 0.06206, 0.062548, 0.062612, 
 # 0.06134, 0.062716, 0.06258, 0.062456, 0.061928, 0.063084, 0.062456, 0.062368]         
 
-#CountBits(strBytes)
+CountBits(strBytes)
 # Pour 1 000 000 de nombres générés:
 # On obtient ces données statistiques pour chacun des octets générés par la liste de bits : 
 #
