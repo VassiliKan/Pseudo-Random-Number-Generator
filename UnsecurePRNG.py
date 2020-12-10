@@ -165,26 +165,19 @@ CountDuoBytes(strBytes)
 
 CountFourBytes(strBytes)
 # Pour 1 000 000 de nombres générés:
-# On obtient les proportions suivantes pour chacun des demis octets existants : 
-# [0.056792, 0.059792, 0.06474, 0.059784, 0.064796, 0.068888, 0.064392, 0.060256,
-#  0.061304, 0.064752, 0.068388, 0.063936, 0.0612, 0.064328, 0.060824, 0.055828] 
-# 
-# - Etendue :  0.013060                                                                                       
-# - Moyenne :  0.0625                                                                                                     
+# - Etendue :  0.013060
 # - Ecart type :  0.0035583
 
 CountBits(strBytes)
 # Pour 1 000 000 de nombres générés:
 # On obtient ces données statistiques pour chacun des octets générés par la liste de bits : 
 # - Etendue :  0.00212                                                                                                    
-# - moyenne :  0.00390625                                                                                                 
 # - ecart type :  0.00037958                                                                                                                         
 #
 # Ces données semblent raisonnable au regard du nombre d'octets compabilisé (125 000)
 #
 # Pour 10 000 000 de nombres générés:
-# - Etendue :  0.00181279                                                                                      
-# - Moyenne :  0.00390625                                                                                                 
+# - Etendue :  0.00181279                                                                                                
 # - Ecart type :  0.00034033
 
 
