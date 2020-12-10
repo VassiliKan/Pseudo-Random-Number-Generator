@@ -48,7 +48,7 @@ def BBS(nb):
 	
 
 ##Proportion de 0 et de 1 :
-def CountBytes(string):
+def CountBits(string):
 	nb1 = 0
 	nb0 = 0
 	lenght = len(string)
@@ -60,7 +60,7 @@ def CountBytes(string):
 	print("La proportion de '1' est : ", nb1 / lenght, ", celle de '0' est de  ", nb0 / lenght, "\n")
 	
 
-def CountDuoBytes(string):
+def CountDuoBits(string):
 	nb00 = 0
 	nb01 = 0
 	nb10 = 0
@@ -82,7 +82,7 @@ def CountDuoBytes(string):
 
 
 
-def CountFourBytes(string):
+def CountFourBits(string):
 	listCounter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ## dico
 	lenght = len(string) / 4
 	listCompare = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -103,7 +103,7 @@ def CountFourBytes(string):
 	print(" - ecart type : ", std(listCounter), "\n")
 
 
-def CountBits(string):
+def CountBytes(string):
 	listCounter = [0 for x in range(256)]
 	listCompare = [x for x in range(256)]
 
