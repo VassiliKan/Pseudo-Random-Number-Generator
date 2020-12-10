@@ -85,13 +85,12 @@ def CountDuoBits(string):
 def CountFourBits(string):
 	listCounter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ## dico
 	lenght = len(string) / 4
-	listCompare = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 	for i in range(0, len(string), 4):
 		subStr = string[i:i+4]
 		value = int(subStr, 2)
 		if value <= 15:
-			listCounter[listCompare.index(int(subStr, 2))] += 1
+			listCounter[value] += 1
 
 	for j in range(len(listCounter)):
 		listCounter[j] = listCounter[j] / lenght
@@ -105,13 +104,12 @@ def CountFourBits(string):
 
 def CountBytes(string):
 	listCounter = [0 for x in range(256)]
-	listCompare = [x for x in range(256)]
 
 	for i in range(0, len(string), 8):
 		subStr = string[i:i+8]
 		value = int(subStr, 2)
 		if value <= 255:
-			listCounter[listCompare.index(int(subStr, 2))] += 1
+			listCounter[value] += 1
 			
 	for j in range(len(listCounter)):
 		listCounter[j] = listCounter[j] / (len(string) / 8)
